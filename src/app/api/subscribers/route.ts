@@ -1,5 +1,8 @@
 export const dynamic = "force-dynamic";
 
+export const runtime = 'nodejs';
+export const maxDuration = 10;
+
 import { Country, AmountRegisteredByCountry, createAmountRegisteredByCountry, ResponseAmountRegistered, DayAmountRegistered } from "@/models/airtable"
 import { getAirtableRegistered } from "@/utils/airtable"
 import { FieldSet, Records } from "airtable"
