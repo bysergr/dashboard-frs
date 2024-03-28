@@ -19,7 +19,8 @@ export default function Home() {
         const sortedDays = data.Days.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
 
         setData({ TotalDays: data.TotalDays, Days: sortedDays })
-      }).catch(() => {
+      }).catch((err: any) => {
+        console.log("Error Api Request", err)
         setHasError(true)
       }).finally(() => {
         setIsLoading(false)
