@@ -11,7 +11,15 @@ export async function GET(): Promise<Response> {
     let registeredByCountryWithTraction: AmountRegisteredByCountry = createAmountRegisteredByCountry()
     let registeredNotEntrepreneurs: AmountRegisteredByCountry = createAmountRegisteredByCountry()
 
-    const records: Records<FieldSet> = await getAirtableRegistered()
+    let records: Records<FieldSet> = []
+    try {
+        records = await getAirtableRegistered()
+    } catch (error) {
+        console.log("Error Airtable: ", error)
+    }
+
+    console.log("Records:", records)
+
     records.forEach((record) => {
         const country = record.get('Country') as Country;
         registeredByCountry[country] += 1;
